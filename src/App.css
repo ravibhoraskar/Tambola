@@ -22,7 +22,7 @@
   font-size: large;
 }
 
-.SelectedCell{
+.SelectedCell {
   padding: 7px;
   font-size: 2em;
   background-color: #ea7987;
@@ -30,25 +30,29 @@
   align-items: center;
 }
 
-.UnselectedCell{
+.UnselectedCell {
   padding: 7px;
   font-size: 2em;
-  background-color: #FFFF;
+  background-color: #ffff;
   vertical-align: middle;
   align-items: center;
 }
 
-.GenerateButton{
+.GenerateButton {
   background-color: #9effc6;
   width: 210px;
   font-size: 3em;
 }
 
-.NextSelectedValue{
+.NextSelectedValue {
   font-size: 3em;
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

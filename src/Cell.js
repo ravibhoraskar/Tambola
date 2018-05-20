@@ -1,11 +1,9 @@
-import React from 'react';
+import React from "react";
 
-let Cell = (props) => {
-    return (
-      <div className={props.selected ? "SelectedCell" : "UnselectedCell"}>
-        {props.value}
-      </div>
-    )
-}
+const Cell = props => (
+  <div className={props.selected ? "SelectedCell" : "UnselectedCell"}>
+    {props.value}
+  </div>
+);
 
 export default Cell;
