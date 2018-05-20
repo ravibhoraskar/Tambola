@@ -1,8 +1,7 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import Grid from "./Grid.js";
-import NextValue from "./NextValue.js";
+import React, { Component } from 'react';
+import './App.css';
+import Grid from './Grid.js';
+import LastValue from './LastValue.js';
 
 class App extends Component {
   constructor(props) {
@@ -18,20 +17,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">
-            Welcome to Tambola, powered by Ravi Bhoraskar
-          </h1>
-        </header>
         <center>
-          <p className="GenerateButton" onClick={this.onClick}>
-            Tambolify
-          </p>
-          <NextValue
-            value={this.state.nextSelectedValue}
-            onClick={this.onClick}
-          />
+          <button className="GenerateButton" onClick={this.onClick}>
+            Tambolify!
+          </button>
+          <LastValue value={this.state.nextSelectedValue} />
           <table>
             <tbody>
               <Grid selectedValues={this.state.selectedValues} />
@@ -45,7 +35,6 @@ class App extends Component {
   onClick() {
     const oldSelectedValues = this.state.selectedValues;
     const nextSelectedValue = this.getNextSelectedValue(oldSelectedValues);
-    console.log(nextSelectedValue);
     const newSelectedValues = oldSelectedValues.map((item, index) => {
       if (index === nextSelectedValue) {
         return true;
