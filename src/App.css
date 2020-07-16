@@ -51,8 +51,22 @@
   cursor: pointer;
 }
 
+.HistoryContainer {
+  margin-top: 15pt;
+  margin-bottom: 15pt;
+}
+
 .NextSelectedValue {
   font-size: 3em;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.PreviousSelectedValue {
+  font-size: 1.5em;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10pt;
 }
 
 @keyframes App-logo-spin {

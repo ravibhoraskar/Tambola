@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Grid from './Grid.js';
-import LastValue from './LastValue.js';
 import LastFiveValues from './LastFiveValues.js';
 
 class App extends Component {
@@ -23,7 +22,6 @@ class App extends Component {
           <button className="GenerateButton" onClick={this.onClick}>
             Tambolify!
           </button>
-          <LastValue value={this.state.nextSelectedValue} />
           <LastFiveValues value={this.state.lastFiveSelectedValues} />
           <table>
             <tbody>
@@ -65,6 +63,9 @@ class App extends Component {
   }
 
   getLastFiveSelectedValues(lastFiveSelectedValues, nextSelectedValue) {
+    if (!nextSelectedValue) {
+      return lastFiveSelectedValues;
+    }
     lastFiveSelectedValues.push(nextSelectedValue);
     if (lastFiveSelectedValues.length > 5) {
       lastFiveSelectedValues.shift();
