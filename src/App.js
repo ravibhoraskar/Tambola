@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import './App.css';
 import Grid from './Grid.js';
 import LastValue from './LastValue.js';
+import LastFiveValues from './LastFiveValues.js';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       nextSelectedValue: null,
-      selectedValues: [true].concat([...Array(90).keys()].map(index => false))
+      selectedValues: [true].concat([...Array(90).keys()].map(index => false)),
+      lastFiveSelectedValues: []
     };
 
     this.onClick = this.onClick.bind(this);
@@ -22,6 +24,7 @@ class App extends Component {
             Tambolify!
           </button>
           <LastValue value={this.state.nextSelectedValue} />
+          <LastFiveValues value={this.state.lastFiveSelectedValues} />
           <table>
             <tbody>
               <Grid selectedValues={this.state.selectedValues} />
@@ -35,6 +38,10 @@ class App extends Component {
   onClick() {
     const oldSelectedValues = this.state.selectedValues;
     const nextSelectedValue = this.getNextSelectedValue(oldSelectedValues);
+    const lastFiveValues = this.getLastFiveSelectedValues(
+      this.state.lastFiveSelectedValues,
+      nextSelectedValue
+    );
     const newSelectedValues = oldSelectedValues.map((item, index) => {
       if (index === nextSelectedValue) {
         return true;
@@ -44,7 +51,8 @@ class App extends Component {
 
     this.setState({
       nextSelectedValue,
-      selectedValues: newSelectedValues
+      selectedValues: newSelectedValues,
+      lastFiveSelectedValues: lastFiveValues
     });
   }
 
@@ -54,6 +62,14 @@ class App extends Component {
       .filter(value => value !== null);
 
     return candidates[Math.floor(Math.random() * candidates.length)];
+  }
+
+  getLastFiveSelectedValues(lastFiveSelectedValues, nextSelectedValue) {
+    lastFiveSelectedValues.push(nextSelectedValue);
+    if (lastFiveSelectedValues.length > 5) {
+      lastFiveSelectedValues.shift();
+    }
+    return lastFiveSelectedValues;
   }
 }
 
